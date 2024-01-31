@@ -38,4 +38,12 @@ class DataRecordsManager(private val context: Context) {
             preferences[idKey] = id
         }
     }
+
+    suspend fun clearUserData() {
+        context.dataStore.edit { preferences ->
+            preferences[usernameKey] = ""
+            preferences[emailAddressKey] = ""
+            preferences[idKey] = ""
+        }
+    }
 }
